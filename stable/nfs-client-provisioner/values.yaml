@@ -11,8 +11,8 @@ image:
   pullPolicy: IfNotPresent
 
 nfs:
-  server:
-  path: /ifs/kubernetes
+  server: 192.168.0.4
+  path: /zData/k8s-nfs
   mountOptions:
 
 # For creating the StorageClass automatically:
