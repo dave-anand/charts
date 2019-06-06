@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 3
+replicaCount: 2
 daemonSet: false
 
 # Enable autoscaling using HorizontalPodAutoscaler
@@ -52,7 +52,7 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 dnsPolicy: "ClusterFirst"
-hostNetwork: false
+hostNetwork: true
 
 service:
   type: LoadBalancer
@@ -63,13 +63,17 @@ service:
     enabled: true
     port: 80
     targetPort: 8080
-    # nodePort: 30080
+
+    # Uncommenting this
+    nodePort: 30080
 
   https:
     enabled: true
     port: 443
     targetPort: 8443
-    # nodePort: 30443
+
+    # Uncommenting this
+    nodePort: 30443
 
   annotations:
     getambassador.io/config: |
@@ -142,7 +146,7 @@ affinity: {}
 
 # Enabling the prometheus exporter creates a sidecar and configures ambassador to use it
 prometheusExporter:
-  enabled: false
+  enabled: true
   repository: prom/statsd-exporter
   tag: v0.8.1
   pullPolicy: IfNotPresent
