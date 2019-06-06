@@ -80,7 +80,7 @@ service:
       kind: Module
       name: ambassador
       config:
-        service_port: 8080
+        service_port: 8090
   #       diagnostics:
   #         enabled: false
 
