@@ -52,7 +52,7 @@ image:
 nameOverride: ""
 fullnameOverride: ""
 dnsPolicy: "ClusterFirst"
-hostNetwork: true
+hostNetwork: false
 
 service:
   type: LoadBalancer
@@ -62,16 +62,14 @@ service:
   http:
     enabled: true
     port: 80
-    targetPort: 9080
-
-    #nodePort: 30080
+    targetPort: 8090
+    # nodePort: 30080
 
   https:
     enabled: true
     port: 443
-    targetPort: 9443
-
-    #nodePort: 30443
+    targetPort: 8443
+    # nodePort: 30443
 
   annotations:
     getambassador.io/config: |
@@ -80,7 +78,7 @@ service:
       kind: Module
       name: ambassador
       config:
-        service_port: 8090
+        service_port: 8080
   #       diagnostics:
   #         enabled: false
 
@@ -144,7 +142,7 @@ affinity: {}
 
 # Enabling the prometheus exporter creates a sidecar and configures ambassador to use it
 prometheusExporter:
-  enabled: true
+  enabled: false
   repository: prom/statsd-exporter
   tag: v0.8.1
   pullPolicy: IfNotPresent
