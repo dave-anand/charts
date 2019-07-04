@@ -35,10 +35,9 @@ image:
 imagePullSecrets: []
 # - registrySecretName
 
-args: []
+args: ['--kubelet-preferred-address-types=InternalIP']
 # enable this if you have self-signed certificates, see: https://github.com/kubernetes-incubator/metrics-server
 #  - --kubelet-insecure-tls
-- --kubelet-preferred-address-types=InternalIP
 
 resources: {}
 
